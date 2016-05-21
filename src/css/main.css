@@ -1,0 +1,76 @@
+/* ----------------------------------------------------------------------- */
+/* #RESET                                                                  */
+/* ----------------------------------------------------------------------- */
+
+*, *:before, *:after {
+    box-sizing: border-box;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* ----------------------------------------------------------------------- */
+/* #BASE                                                                   */
+/* ----------------------------------------------------------------------- */
+
+html, body {
+    border: 0;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font: normal normal 16px/22px arial, helvetica, sans-serif;
+}
+
+body {
+    color: #1f1f1f;
+}
+
+/* ----------------------------------------------------------------------- */
+/* #LAYOUT                                                                 */
+/* ----------------------------------------------------------------------- */
+
+.builder-titlebar {
+    text-align: center;
+    top: 0;
+}
+
+.builder-titlebar h1 {
+    align-items: center;
+    display: flex;
+    line-height: 2.75rem;
+    justify-content: center;
+}
+
+.builder-wrapper {
+    height: 100%;
+    position: relative;
+}
+
+.builder-toolbox {
+    bottom: 0;
+}
+
+.builder-stage {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 100;
+}
+
+/* ----------------------------------------------------------------------- */
+/* #THEME                                                                  */
+/* ----------------------------------------------------------------------- */
+
+.chrome-toolbar {
+    background: rgba(0, 0, 0, 0.3);
+    height: 2.75rem;
+    left: 0;
+    position: absolute;
+    right: 0;
+    z-index: 1000;
+}
