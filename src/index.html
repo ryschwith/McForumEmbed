@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html lang = "en-US">
+<html lang = "en-US" ng-app = "mcbuilder">
   <head>
     <meta charset = "utf-8" />
     <meta name = "viewport" content = "width=device-width,initial-scale=1.0" />
@@ -8,13 +8,22 @@
     <title>Minecraft Builder</title>
 
     <link rel = "stylesheet" type = "text/css" href = "css/main.css" />
+
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src = "js/app.js"></script>
+    <script src = "js/services.js"></script>
+    <script src = "js/controllers.js"></script>
   </head>
 
   <body class = "builder-wrapper">
     <header class = "builder-titlebar chrome-toolbar">
-      <h1>Minecraft Builder</h1>
+      <h1>{{"Minecraft Builder"}}</h1>
     </header>
-    <div class = "builder-window builder-toolbox chrome-toolbar">
+    <div class = "builder-window builder-toolbox chrome-toolbar" ng-controller = "ToolboxController" ng-mousedown = "setScrollingState(true)" ng-mouseup = "setScrollingState(false)" ng-mouseout = "setScrollingState(false)">
+      <ul class = "builder-toolbox-tools" ng-mousemove = "registerMouseMove($event)" ng-click = "selectTool($event)">
+        <li ng-repeat = "tool in tools" style = "background-color: {{tool.color}}" title = "{{tool.name}}">
+        </li>
+      </ul>
     </div>
     <div class = "builder-window builder-stage">
     </div>

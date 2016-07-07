@@ -1,0 +1,86 @@
+;
+
+mcbuilder.service( "toolService", function() {
+    var tools = [
+        {
+            "name": "Grass",
+            "color": "#36964e"
+        },
+        {
+            "name": "Cobblestone",
+            "color": "#68696e"
+        },
+        {
+            "name": "Stone",
+            "color": "#ababab"
+        },
+        {
+            "name": "Dirt",
+            "color": "#a88023"
+        },
+        {
+            "name": "Gravel",
+            "color": "#bec6cc"
+        },
+        {
+            "name": "Andesite",
+            "color": "#d9cfc5"
+        },
+        {
+            "name": "Diorite",
+            "color": "#c8c8c8"
+        },
+        {
+            "name": "Granite",
+            "color": "#dbbaaf"
+        },
+        {
+            "name": "Obsidian",
+            "color": "#232629"
+        },
+        {
+            "name": "Oak Wood",
+            "color": "#9c6732"
+        },
+        {
+            "name": "Birch Wood",
+            "color": "#edd68c"
+        },
+        {
+            "name": "Spruce Wood",
+            "color": "#91794e"
+        },
+        {
+            "name": "Acacia Wood",
+            "color": "#bf825a"
+        },
+        {
+            "name": "Jungle Wood",
+            "color": "#bf7724"
+        },
+        {
+            "name": "Dark Oak Wood",
+            "color": "#5c370e"
+        }
+    ];
+
+    this.getTool = function(name) {
+        for(var index in tools) {
+            if(!tools.hasOwnProperty(index)) continue;
+
+            if(tools[index].name === name) {
+                return tools[index];
+            }
+        }
+
+        return {};
+    };
+
+    this.getAllTools = function() {
+        return tools;
+    };
+
+    return this;
+});
+
+

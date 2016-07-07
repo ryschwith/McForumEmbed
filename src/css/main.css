@@ -74,3 +74,21 @@ body {
     right: 0;
     z-index: 1000;
 }
+
+/* ----------------------------------------------------------------------- */
+/* #TOOLBOX                                                                */
+/* ----------------------------------------------------------------------- */
+
+.builder-toolbox {
+    overflow: hidden;
+}
+
+.builder-toolbox-tools {
+    white-space: nowrap;
+}
+
+.builder-toolbox-tools li {
+    display: inline-block;
+    padding-bottom: 100%;
+    width: 2.75rem;
+}
