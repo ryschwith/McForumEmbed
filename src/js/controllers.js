@@ -39,6 +39,28 @@ mcbuilder
         $scope.$on("tool:selected", function(e, data) {
             $scope.tool = data;
         })
+    })
+    .controller( "BuilderStageController", function( $scope, toolService ) {
+        $scope.useTool = function(e) {
+            var coords = { x: e.pageX, y: e.pageY };
+
+            $scope.addBlock(e.currentTarget, coords, toolService.getCurrentTool());
+        };
+
+        $scope.addBlock = function(el, coords, tool) {
+            var gridSize = parseInt(window.getComputedStyle(el, null).getPropertyValue("font-size"), 10);
+                block = document.createElement("div");
+
+            //if(typeof gridSize === "undefined" || typeof el === "undefined" || el === null) return;
+
+            block.className = "builder-block";
+            block.style.backgroundColor = tool.color;
+            block.style.left = (Math.floor(coords.x / gridSize) * gridSize) + "px";
+            block.style.top = (Math.floor(coords.y / gridSize) * gridSize) + "px";
+            block.title = tool.name;
+
+            el.appendChild(block);
+        };
     });
 
 
