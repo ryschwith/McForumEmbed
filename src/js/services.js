@@ -1,68 +1,73 @@
 ;
 
-mcbuilder.service( "toolService", function() {
+mcbuilder.service( "toolService", function( $rootScope ) {
     var tools = [
-        {
-            "name": "Grass",
-            "color": "#36964e"
-        },
-        {
-            "name": "Cobblestone",
-            "color": "#68696e"
-        },
-        {
-            "name": "Stone",
-            "color": "#ababab"
-        },
-        {
-            "name": "Dirt",
-            "color": "#a88023"
-        },
-        {
-            "name": "Gravel",
-            "color": "#bec6cc"
-        },
-        {
-            "name": "Andesite",
-            "color": "#d9cfc5"
-        },
-        {
-            "name": "Diorite",
-            "color": "#c8c8c8"
-        },
-        {
-            "name": "Granite",
-            "color": "#dbbaaf"
-        },
-        {
-            "name": "Obsidian",
-            "color": "#232629"
-        },
-        {
-            "name": "Oak Wood",
-            "color": "#9c6732"
-        },
-        {
-            "name": "Birch Wood",
-            "color": "#edd68c"
-        },
-        {
-            "name": "Spruce Wood",
-            "color": "#91794e"
-        },
-        {
-            "name": "Acacia Wood",
-            "color": "#bf825a"
-        },
-        {
-            "name": "Jungle Wood",
-            "color": "#bf7724"
-        },
-        {
-            "name": "Dark Oak Wood",
-            "color": "#5c370e"
-        }
-    ];
+            {
+                "name": "Grass",
+                "color": "#36964e"
+            },
+            {
+                "name": "Cobblestone",
+                "color": "#68696e"
+            },
+            {
+                "name": "Stone",
+                "color": "#ababab"
+            },
+            {
+                "name": "Dirt",
+                "color": "#a88023"
+            },
+            {
+                "name": "Gravel",
+                "color": "#bec6cc"
+            },
+            {
+                "name": "Andesite",
+                "color": "#d9cfc5"
+            },
+            {
+                "name": "Diorite",
+                "color": "#c8c8c8"
+            },
+            {
+                "name": "Granite",
+                "color": "#dbbaaf"
+            },
+            {
+                "name": "Obsidian",
+                "color": "#232629"
+            },
+            {
+                "name": "Oak Wood",
+                "color": "#9c6732"
+            },
+            {
+                "name": "Birch Wood",
+                "color": "#edd68c"
+            },
+            {
+                "name": "Spruce Wood",
+                "color": "#91794e"
+            },
+            {
+                "name": "Acacia Wood",
+                "color": "#bf825a"
+            },
+            {
+                "name": "Jungle Wood",
+                "color": "#bf7724"
+            },
+            {
+                "name": "Dark Oak Wood",
+                "color": "#5c370e"
+            }
+        ],
+        current = {};
+
+    this.getCurrentTool = function() {
+        return current;
+    };
 
     this.getTool = function(name) {
         for(var index in tools) {
@@ -78,6 +83,11 @@ mcbuilder.service( "toolService", function() {
 
     this.getAllTools = function() {
         return tools;
+    };
+
+    this.setTool = function(name) {
+        current = this.getTool(name);
+        $rootScope.$broadcast("tool:selected", current);
     };
 
     return this;

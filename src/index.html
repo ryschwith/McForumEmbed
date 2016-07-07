@@ -18,6 +18,7 @@
   <body class = "builder-wrapper">
     <header class = "builder-titlebar chrome-toolbar">
       <h1>{{"Minecraft Builder"}}</h1>
+      <div class = "chrome-floating builder-currentTool" ng-controller = "CurrentToolIndicatorController" style = "background-color: {{tool.color}}" title = "Current: {{tool.name}}"></div>
     </header>
     <div class = "builder-window builder-toolbox chrome-toolbar" ng-controller = "ToolboxController" ng-mousedown = "setScrollingState(true)" ng-mouseup = "setScrollingState(false)" ng-mouseout = "setScrollingState(false)">
       <ul class = "builder-toolbox-tools" ng-mousemove = "registerMouseMove($event)" ng-click = "selectTool($event)">

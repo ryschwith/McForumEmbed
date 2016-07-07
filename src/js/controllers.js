@@ -1,38 +1,44 @@
 ;
 
-mcbuilder.controller( "ToolboxController", function( $scope, toolService ) {
-    $scope.isScrolling = false;
-    $scope.translateOffset = 0;
-    $scope.previousMouseX = 0;
-    $scope.tools = toolService.getAllTools();
+mcbuilder
+    .controller( "ToolboxController", function( $scope, toolService ) {
+        $scope.isScrolling = false;
+        $scope.translateOffset = 0;
+        $scope.previousMouseX = 0;
+        $scope.tools = toolService.getAllTools();
 
-    $scope.setScrollingState = function(state) {
-        $scope.isScrolling = !!state;
-    };
+        $scope.setScrollingState = function(state) {
+            $scope.isScrolling = !!state;
+        };
 
-    $scope.registerMouseMove = function(e) {
-        var currentMouseX = e.pageX;
+        $scope.registerMouseMove = function(e) {
+            var currentMouseX = e.pageX;
 
-        if( $scope.isScrolling ) {
-            var newOffset = $scope.translateOffset + currentMouseX - $scope.previousMouseX;
+            if( $scope.isScrolling ) {
+                var newOffset = $scope.translateOffset + currentMouseX - $scope.previousMouseX;
 
-            if( newOffset > 0 ) newOffset = 0;
-            if( newOffset < document.body.scrollWidth - e.currentTarget.scrollWidth ) newOffset = document.body.scrollWidth - e.currentTarget.scrollWidth;
+                if( newOffset > 0 ) newOffset = 0;
+                if( newOffset < document.body.scrollWidth - e.currentTarget.scrollWidth ) newOffset = document.body.scrollWidth - e.currentTarget.scrollWidth;
 
-            $scope.offsetElement( e.currentTarget, newOffset );
+                $scope.offsetElement( e.currentTarget, newOffset );
+            }
+
+            $scope.previousMouseX = currentMouseX;
         }
 
-        $scope.previousMouseX = currentMouseX;
-    }
+        $scope.offsetElement = function(el, offset) {
+            el.style.transform = "translateX(" + offset + "px)";
+            $scope.translateOffset = offset;
+        };
 
-    $scope.offsetElement = function(el, offset) {
-        el.style.transform = "translateX(" + offset + "px)";
-        $scope.translateOffset = offset;
-    };
-
-    $scope.selectTool = function(e) {
-        alert(e.currentTarget);
-    };
-});
+        $scope.selectTool = function(e) {
+            toolService.setTool(e.srcElement.title);
+        };
+    })
+    .controller( "CurrentToolIndicatorController", function( $scope, toolService ) {
+        $scope.$on("tool:selected", function(e, data) {
+            $scope.tool = data;
+        })
+    });
 
 

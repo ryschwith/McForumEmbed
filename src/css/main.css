@@ -75,6 +75,10 @@ body {
     z-index: 1000;
 }
 
+.chrome-floating {
+    position: absolute;
+}
+
 /* ----------------------------------------------------------------------- */
 /* #TOOLBOX                                                                */
 /* ----------------------------------------------------------------------- */
@@ -91,4 +95,21 @@ body {
     display: inline-block;
     padding-bottom: 100%;
     width: 2.75rem;
+}
+
+/* ----------------------------------------------------------------------- */
+/* #CURRENT_TOOL_INDICATOR                                                 */
+/* ----------------------------------------------------------------------- */
+
+.builder-currentTool {
+    bottom: 0.5em;
+    left: 0.5em;
+    top: 0.5em;
+    width: 1.75em;
+}
+
+.builder-currentTool:hover {
+    box-shadow:
+        0 0 0 3px #fff,
+        0 0 0 5px #000
 }
