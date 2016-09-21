@@ -3,10 +3,6 @@
 
 var mcbuilder = angular.module( "mcbuilder", [] );
 
-/*mcbuilder
-	.config(function(toolServiceProvider) {
-		toolServiceProvider.setUrl("data/tools.json");
-	})
-	.run(function(toolServiceProvider) {
-		toolServiceProvider.retrieveToolData();
-	});*/
+mcbuilder.config(function(toolServiceProvider) {
+    toolServiceProvider.setUrl("data/tools.json");
+});
