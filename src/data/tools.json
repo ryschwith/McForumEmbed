@@ -1,4 +1,8 @@
-{ "tools":
+[
+    {
+        "name": "Quartz",
+        "color": "#ffffff"
+    },
     {
         "name": "Grass",
         "color": "#36964e"
@@ -59,4 +63,4 @@
         "name": "Dark Oak Wood",
         "color": "#5c370e"
     }
-}
+]

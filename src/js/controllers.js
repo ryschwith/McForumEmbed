@@ -5,7 +5,11 @@ mcbuilder
         $scope.isScrolling = false;
         $scope.translateOffset = 0;
         $scope.previousMouseX = 0;
-        $scope.tools = toolService.getAllTools();
+        $scope.tools = [];
+
+        $scope.$on("tool:load.all", function(e, data) {
+            $scope.tools = data;
+        });
 
         $scope.setScrollingState = function(state) {
             $scope.isScrolling = !!state;
