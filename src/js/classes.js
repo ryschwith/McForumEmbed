@@ -1,17 +1,26 @@
 ;
-
 window.mcs = window.mcs || {};
 
+/**
+ * Represents a point in an arbitrary, three-dimensional space
+ */
 mcs.Point = function() {
-    this._x = parseInt(arguments[0], 10) || null;
-    this._y = parseInt(arguments[1], 10) || null;
-    this._z = parseInt(arguments[2], 10) || null;
+    this.x(arguments[0]);
+    this.y(arguments[1]);
+    this.z(arguments[2]);
+};
 
+mcs.Point.prototype.validateNumber = function(input) {
+    var num = parseInt(input, 10);
+    if(num === null || typeof num === "undefined" || isNaN(num)) {
+        return null;
+    }
+    return num;
 };
 
 mcs.Point.prototype.x = function() {
     if(arguments.length > 0) {
-        this._x = arguments[0];
+        this._x = this.validateNumber(arguments[0]);
     }
 
     return this._x;
@@ -19,7 +28,7 @@ mcs.Point.prototype.x = function() {
 
 mcs.Point.prototype.y = function() {
     if(arguments.length > 0) {
-        this._y = arguments[0];
+        this._y = this.validateNumber(arguments[0]);
     }
 
     return this._y;
@@ -27,12 +36,15 @@ mcs.Point.prototype.y = function() {
 
 mcs.Point.prototype.z = function() {
     if(arguments.length > 0) {
-        this._z = arguments[0];
+        this._z = this.validateNumber(arguments[0]);
     }
 
     return this._z;
 };
 
+/**
+ * Represents a two-dimensional plane
+ */
 mcs.GridPlane = function() {
     this._origin = new mcs.Point(0,0);
     this._items = [];
