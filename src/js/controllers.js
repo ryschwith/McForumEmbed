@@ -41,6 +41,8 @@ mcbuilder
         })
     })
     .controller( "BuilderStageController", function( $scope, toolService ) {
+        $scope.structure = new mcs.GridPlane();
+
         $scope.useTool = function(e) {
             var coords = { x: e.pageX, y: e.pageY };
 
@@ -51,15 +53,16 @@ mcbuilder
             var gridSize = parseInt(window.getComputedStyle(el, null).getPropertyValue("font-size"), 10);
                 block = document.createElement("div");
 
-            //if(typeof gridSize === "undefined" || typeof el === "undefined" || el === null) return;
+            if(Object.keys(tool).length === 0 && tool.constructor === Object) return;
 
             block.className = "builder-block";
             block.style.backgroundColor = tool.color;
-            block.style.left = (Math.floor(coords.x / gridSize) * gridSize) + "px";
-            block.style.top = (Math.floor(coords.y / gridSize) * gridSize) + "px";
+            //block.style.left = Math.floor(coords.x / gridSize) + "em";
+            //block.style.top = Math.floor(coords.y / gridSize) + "em";
             block.title = tool.name;
 
-            el.appendChild(block);
+            //el.appendChild(block);
+            $scope.stucture.addItem(new mcs.Point(Math.floor(coords.x / gridSize), Math.floor(coords.y / gridSize)), block);
         };
     });
 
