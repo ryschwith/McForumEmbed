@@ -1,35 +1,50 @@
-(function(mcs) {
-    mcs.Point = (function() {
-        var x, y;
+;
 
-        if(arguments.length >= 2) {
-            x = arguments[0];
-            y = arguments[1];
-        }
+window.mcs = window.mcs || {};
 
-        return {
-            x: x,
-            y: y
-        };
-    })();
+mcs.Point = function() {
+    this._x = parseInt(arguments[0], 10) || null;
+    this._y = parseInt(arguments[1], 10) || null;
+    this._z = parseInt(arguments[2], 10) || null;
 
-    mcs.GridPlane = (new function() {
-        var origin = new mcs.Point(),
-            items = [];
+};
 
-        var addItem = function(coords, el) {
-            this.items.push({ Coordinates: coords, Element: el});
-        };
+mcs.Point.prototype.x = function() {
+    if(arguments.length > 0) {
+        this._x = arguments[0];
+    }
 
-        var setOrigin = function(x,y) {
-            if(isNaN(x) || isNaN(y)) return;
+    return this._x;
+};
 
-            this.origin.x = x;
-            this.origin.y = y;
-        };
+mcs.Point.prototype.y = function() {
+    if(arguments.length > 0) {
+        this._y = arguments[0];
+    }
 
-        return {
-            setOrigin: setOrigin
-        }
-    })();
-})(window.mcs = window.mcs || {});
+    return this._y;
+};
+
+mcs.Point.prototype.z = function() {
+    if(arguments.length > 0) {
+        this._z = arguments[0];
+    }
+
+    return this._z;
+};
+
+mcs.GridPlane = function() {
+    this._origin = new mcs.Point(0,0);
+    this._items = [];
+};
+
+mcs.GridPlane.prototype.addItem = function(coords, el) {
+    this._items.push({ Coordinates: coords, Element: el});
+};
+
+mcs.GridPlane.prototype.setOrigin = function(x,y) {
+    if(isNaN(x) || isNaN(y)) return;
+
+    this._origin.x(x);
+    this._origin.y(y);
+};

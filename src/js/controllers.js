@@ -66,7 +66,7 @@ mcbuilder
             block.title = tool.name;
 
             //el.appendChild(block);
-            $scope.stucture.addItem(new mcs.Point(Math.floor(coords.x / gridSize), Math.floor(coords.y / gridSize)), block);
+            $scope.structure.addItem(new mcs.Point(Math.floor(coords.x / gridSize), Math.floor(coords.y / gridSize)), block);
         };
     });
 
